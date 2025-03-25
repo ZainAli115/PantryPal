@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Main Circle Background -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M100,100m-85,0a85,85 0,1 1,170 0a85,85 0,1 1,-170 0" />
+
+    <!-- Fork Icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M75,45 L85,45 L85,95 A10,10 0 1,1 75,95 L75,45
+                         M65,45 L95,45 L95,50 L65,50 L65,45" />
+
+    <!-- Knife Icon -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M115,45 L125,45 L125,95 A10,10 0 1,1 115,95 L115,45
+                         M105,45 L135,45 L135,50 L105,50 L105,45" />
+
+    <!-- Plate/Bowl Base -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M60,110 A40,15 0 0,0 140,110 L140,120 A40,15 0 0,1 60,120 Z" />
+
+    <!-- Steam Lines (decorative) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M85,130 Q90,120 95,130 Q100,140 105,130 Q110,120 115,130" />
+
+    <!-- Text Background Pill -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,150 L150,150 A10,10 0 0,1 150,170 L50,170 A10,10 0 0,1 50,150 Z" />
+
+    <!-- App Name -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M60,165 L140,165"
+        android:strokeColor="#4CAF50"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+</vector> 

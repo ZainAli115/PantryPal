@@ -3,18 +3,12 @@ package com.example.pantrypal
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.*
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.pantrypal.screens.SplashScreen
 import com.example.pantrypal.navigation.Screen
 import com.example.pantrypal.screens.HomeScreen
 import com.example.pantrypal.screens.RecipeDetailScreen
@@ -27,24 +21,29 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             PantryPalTheme {
-                val navController = rememberNavController()
-                val recipeViewModel: RecipeViewModel = viewModel() // Create ViewModel once
+                var showSplash by remember { mutableStateOf(true) }
+                
+                if (showSplash) {
+                    SplashScreen(onSplashFinished = { showSplash = false })
+                } else {
+                    val navController = rememberNavController()
+                    val recipeViewModel: RecipeViewModel = viewModel()
 
-                NavHost(
-                    navController = navController,
-                    startDestination = Screen.Home.route
-                ) {
-                    composable(Screen.Home.route) {
-                        HomeScreen(navController, recipeViewModel) // Pass shared ViewModel
-                    }
-                    composable(Screen.RecipeSuggestion.route) {
-                        RecipeSuggestionScreen(navController = navController,recipeViewModel) // Pass shared ViewModel
-                    }
-                    composable(Screen.RecipeDetail.route) {
-                        RecipeDetailScreen(recipeViewModel) // Use the same instance
+                    NavHost(
+                        navController = navController,
+                        startDestination = Screen.Home.route
+                    ) {
+                        composable(Screen.Home.route) {
+                            HomeScreen(navController, recipeViewModel)
+                        }
+                        composable(Screen.RecipeSuggestion.route) {
+                            RecipeSuggestionScreen(navController = navController, recipeViewModel)
+                        }
+                        composable(Screen.RecipeDetail.route) {
+                            RecipeDetailScreen(recipeViewModel)
+                        }
                     }
                 }
-
             }
         }
     }
